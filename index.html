@@ -384,6 +384,17 @@
 
           <div class="item" role="listitem">
             <div>
+              <div class="item-title">Wind Tunnel Airfoil Analysis</div>
+              <div class="item-desc">Measured lift and drag on a finite-span wing in a subsonic wind tunnel, comparing experimental C<sub>L</sub> and C<sub>D</sub> curves against XFLR5 simulations and finite aspect ratio lifting-line theory.</div>
+            </div>
+            <div class="item-right">
+              <a class="link" href="https://docs.google.com/presentation/d/1G_MOdEldjs6xdZGjmRoy5XGV1DRhh-BzTxD4AjvO7eI/edit?usp=sharing">Slides</a>
+              <button class="link" style="cursor:pointer;background:rgba(15,20,27,.55);border:1px solid rgba(36,48,66,.75);" onclick="document.getElementById('airfoil-modal').classList.add('open')">Notes</button>
+            </div>
+          </div>
+
+          <div class="item" role="listitem">
+            <div>
               <div class="item-title">Photonic Security Key System</div>
               <div class="item-desc">Built a resilient optical authentication prototype using laser-based photonics keys with real-time pattern recognition.</div>
             </div>
@@ -517,6 +528,41 @@ I thrive on competition, precision, and collaboration, shaped by my experience a
       © <span id="y"></span> Murphy Paul · Built as a lightweight static site.
     </div>
   </footer>
+
+  <!-- AIRFOIL NOTES MODAL -->
+  <div class="modal-backdrop" id="airfoil-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <button class="modal-close" onclick="document.getElementById('airfoil-modal').classList.remove('open')">✕ Close</button>
+      <h2>Wind Tunnel Airfoil Analysis</h2>
+      <p class="byline">Murphy Paul &nbsp;·&nbsp; ENGN 1700 FPC1 &nbsp;·&nbsp; Brown University · Spring 2026</p>
+
+      <h3>Project Overview</h3>
+      <p>Measured lift and drag on a finite-span NACA wing in a subsonic wind tunnel using a two-channel strain gauge balance. Calibrated raw voltage signals to moments, converted to normal and axial forces, then resolved into lift and drag as a function of angle of attack. Results compared against XFLR5 panel-method simulations and finite aspect ratio (FAR) lifting-line theory.</p>
+
+      <h3>Wing Geometry</h3>
+      <div class="m-igrid">
+        <div class="m-icell"><div class="m-ilabel">Span</div><div class="m-ival">302 mm</div></div>
+        <div class="m-icell"><div class="m-ilabel">Chord</div><div class="m-ival">127 mm</div></div>
+        <div class="m-icell"><div class="m-ilabel">Aspect Ratio</div><div class="m-ival">2.375</div></div>
+        <div class="m-icell"><div class="m-ilabel">Oswald e</div><div class="m-ival">0.85</div></div>
+      </div>
+
+      <h3>Analysis Pipeline</h3>
+      <table class="m-table">
+        <thead><tr><th>Step</th><th>Method</th></tr></thead>
+        <tbody>
+          <tr><td>Calibration</td><td>Linear fit of voltage → moment using <code>cal.p</code> coefficients</td></tr>
+          <tr><td>Force conversion</td><td>Moment arms applied to get normal (N) and axial (A) forces; A zeroed at α = 0° to remove tare drag</td></tr>
+          <tr><td>Lift &amp; drag</td><td>L = N·cosα − A·sinα &nbsp;/&nbsp; D = N·sinα + A·cosα</td></tr>
+          <tr><td>Sign check</td><td>Axial channel sign auto-corrected if median C<sub>D</sub> is negative</td></tr>
+          <tr><td>FAR correction</td><td>2D XFLR5 slope corrected to finite AR: a = a₀ / (1 + a₀/πeAR)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Comparisons Made</h3>
+      <p>C<sub>L</sub> and C<sub>D</sub> curves were plotted three ways: experimental wind tunnel data, XFLR5 panel method + FAR correction, and thin airfoil theory + FAR correction. A drag polar (C<sub>L</sub> vs C<sub>D</sub>) and L/D ratio vs angle of attack were also generated. Error bars on normal and axial forces reflect strain gauge signal fluctuations (std dev).</p>
+    </div>
+  </div>
 
   <!-- NOZZLE NOTES MODAL -->
   <div class="modal-backdrop" id="nozzle-modal" onclick="if(event.target===this)this.classList.remove('open')">
