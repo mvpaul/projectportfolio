@@ -324,7 +324,7 @@
             <div class="row">
               <a class="link" href="https://docs.google.com/presentation/d/1_MvDd-3YNXHoKiWtfjezmfieWuWRPtDKYmISBiU7rQE/edit?usp=sharing">Slides</a>
               <a class="link" href="https://github.com/mvpaul/NozzleBehaviorCode">Code</a>
-              <button class="link" style="cursor:pointer;background:rgba(15,20,27,.55);border:1px solid rgba(36,48,66,.75);" onclick="document.getElementById('nozzle-modal').classList.add('open')">Notes</button>
+              <a class="link" href="#nozzle-notes">Notes</a>
             </div>
           </article>
 
@@ -533,7 +533,12 @@ I thrive on competition, precision, and collaboration, shaped by my experience a
   <!-- AIRFOIL NOTES MODAL -->
   <div class="modal-backdrop" id="airfoil-modal" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal">
-      <button class="modal-close" onclick="document.getElementById('airfoil-modal').classList.remove('open')">✕ Close</button>
+      <button class="modal-close" onclick="
+document.getElementById('nozzle-modal').classList.remove('open');
+history.replaceState(null,null,' ');
+">
+✕ Close
+</button>
       <h2>Wind Tunnel Airfoil Analysis</h2>
       <p class="byline">Murphy Paul &nbsp;·&nbsp; ENGN 1700 FPC1 &nbsp;·&nbsp; Brown University · Spring 2026</p>
 
@@ -631,5 +636,20 @@ I thrive on competition, precision, and collaboration, shaped by my experience a
       if (e.key === "Escape") document.getElementById("nozzle-modal").classList.remove("open");
     });
   </script>
+  function openNozzleModal() {
+  document.getElementById('nozzle-modal').classList.add('open');
+}
+
+window.addEventListener('load', () => {
+  if (window.location.hash === '#nozzle-notes') {
+    openNozzleModal();
+  }
+});
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#nozzle-notes') {
+    openNozzleModal();
+  }
+});
 </body>
 </html>
