@@ -630,26 +630,45 @@ history.replaceState(null,null,' ');
     </div>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") document.getElementById("nozzle-modal").classList.remove("open");
-    });
-  </script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
   function openNozzleModal() {
-  document.getElementById('nozzle-modal').classList.add('open');
-}
-
-window.addEventListener('load', () => {
-  if (window.location.hash === '#nozzle-notes') {
-    openNozzleModal();
+    document.getElementById('nozzle-modal').classList.add('open');
   }
-});
 
-window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#nozzle-notes') {
-    openNozzleModal();
+  function closeNozzleModal() {
+    document.getElementById('nozzle-modal').classList.remove('open');
+
+    if (window.location.hash === '#nozzle-notes') {
+      history.replaceState(
+        null,
+        '',
+        window.location.pathname + window.location.search
+      );
+    }
   }
-});
+
+  // Open from URL hash
+  window.addEventListener('load', () => {
+    if (window.location.hash === '#nozzle-notes') {
+      openNozzleModal();
+    }
+  });
+
+  // Open when hash changes
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#nozzle-notes') {
+      openNozzleModal();
+    }
+  });
+
+  // Escape key closes modal
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      closeNozzleModal();
+    }
+  });
+</script>
 </body>
 </html>
