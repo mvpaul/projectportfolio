@@ -106,6 +106,36 @@
     .hero-card .left{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .hero-card .right{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
 
+    /* Featured research panel */
+    .feature-panel{
+      margin-top: 6px;
+      background: linear-gradient(180deg, rgba(15,20,27,.95), rgba(13,17,23,.88));
+      border:1px solid rgba(36,48,66,.7);
+      border-radius: var(--r);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .diagrams{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .diagram-card{
+      margin:0;
+      background: rgba(13,17,23,.55);
+      border:1px solid rgba(36,48,66,.7);
+      border-radius: var(--r);
+      padding: 12px;
+    }
+    .diagram-card svg{ display:block; width:100%; height:auto }
+    .diagram-card figcaption{ margin-top:8px }
+    @media (max-width: 920px){
+      .diagrams{grid-template-columns: 1fr}
+    }
+
     /* Sections */
     section{padding:36px 0}
     .section-head{
@@ -255,6 +285,7 @@
     <div class="container nav">
       <a class="brand" href="#top">Murphy Paul</a>
       <nav aria-label="Primary">
+        <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#about">About</a>
@@ -290,6 +321,141 @@
           <div class="right">
             <span class="muted">Email:</span>
             <a class="link" href="mailto:murphyvpaul@gmail.com">murphyvpaul@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH (HONORS THESIS) -->
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Honors Thesis · In Progress</div>
+            <h2>Hypersonic Scramjet Inlet Aerodynamics</h2>
+          </div>
+          <div class="hint">Rodriguez Flow Group · Brown University · 2026–2027</div>
+        </div>
+
+        <div class="feature-panel">
+          <div class="row" style="justify-content:space-between; align-items:flex-start;">
+            <div class="row">
+              <span class="pill"><span class="dot" style="background:#e8b86d"></span> In progress</span>
+              <span class="tag">MFC Compressible Flow Solver</span>
+              <span class="tag">Oscar HPC / SLURM</span>
+              <span class="tag">Python Post-Processing</span>
+              <span class="tag">SBLI Validation</span>
+            </div>
+            <button class="link" style="cursor:pointer;" onclick="document.getElementById('scramjet-modal').classList.add('open')">Technical notes</button>
+          </div>
+
+          <p class="muted" style="margin:0; max-width:820px;">
+            Honors thesis research on shock-wave/boundary-layer interactions (SBLI) in hypersonic scramjet inlet flow fields. Running high-fidelity CFD simulations with the MFC compressible flow solver on Brown's Oscar HPC cluster, with SLURM job management and Python post-processing pipelines. Focus on aerothermal load characterization and validation against canonical SBLI cases. Results ongoing — full write-up forthcoming upon thesis completion.
+          </p>
+
+          <div class="diagrams">
+            <figure class="diagram-card">
+              <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scramjet inlet shock structure and SBLI diagram">
+                <defs>
+                  <marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#7aa7ff"/>
+                  </marker>
+                </defs>
+                <g font-family="ui-sans-serif, system-ui, sans-serif">
+                  <line x1="15" y1="255" x2="62" y2="255" stroke="#7aa7ff" stroke-width="2" marker-end="url(#arrow1)"/>
+                  <text x="14" y="238" font-size="13" fill="#e9eef5" font-weight="600">M&#8734; &#8776; 6&#8211;8</text>
+
+                  <polygon points="40,400 70,330 370,260 610,215 960,230 960,400" fill="#0d1117" stroke="#3a5270" stroke-width="1.5"/>
+                  <polygon points="560,50 640,150 960,165 960,20 560,20" fill="#0d1117" stroke="#3a5270" stroke-width="1.5"/>
+
+                  <path d="M70,326 L200,316 L370,252 L470,242 L560,230 L610,208 L650,196 L690,182 L730,172 L770,178 L810,196 L850,210 L890,218 L930,222 L960,226 L960,230 L610,215 L370,260 L70,330 Z" fill="#e8b86d" fill-opacity="0.32" stroke="#e8b86d" stroke-opacity="0.7" stroke-width="1"/>
+
+                  <line x1="70" y1="330" x2="520" y2="20" stroke="#7aa7ff" stroke-width="1.75"/>
+                  <circle cx="70" cy="330" r="4" fill="#7aa7ff"/>
+
+                  <line x1="370" y1="260" x2="640" y2="150" stroke="#7aa7ff" stroke-width="1.75"/>
+                  <circle cx="370" cy="260" r="4" fill="#7aa7ff"/>
+                  <circle cx="640" cy="150" r="4" fill="#7aa7ff"/>
+
+                  <polyline points="640,150 705,215 790,165 875,220 960,178" fill="none" stroke="#7aa7ff" stroke-width="1.5" stroke-dasharray="2,5" opacity="0.85"/>
+
+                  <rect x="630" y="160" width="240" height="110" fill="none" stroke="#cc6060" stroke-width="1.25" stroke-dasharray="5,4"/>
+                  <line x1="740" y1="270" x2="700" y2="345" stroke="#cc6060" stroke-width="1"/>
+
+                  <text x="270" y="158" font-size="12" fill="#7aa7ff">Shock 1</text>
+                  <text x="420" y="190" font-size="12" fill="#7aa7ff">Shock 2 &#8594; cowl lip</text>
+                  <text x="420" y="204" font-size="11" fill="#b7c0cc">(shock-on-lip design)</text>
+                  <text x="745" y="115" font-size="12" fill="#7aa7ff">Shock train</text>
+                  <text x="745" y="129" font-size="11" fill="#b7c0cc">(isolator)</text>
+                  <line x1="775" y1="134" x2="785" y2="160" stroke="#7aa7ff" stroke-width="1" opacity="0.6"/>
+                  <text x="120" y="295" font-size="12" fill="#e8b86d">Boundary layer</text>
+                  <line x1="150" y1="300" x2="150" y2="320" stroke="#e8b86d" stroke-width="1"/>
+                  <text x="590" y="365" font-size="12" fill="#cc6060">SBLI / shock-induced</text>
+                  <text x="590" y="379" font-size="12" fill="#cc6060">separation</text>
+                  <text x="150" y="378" font-size="12" fill="#b7c0cc">Forebody / ramp</text>
+                  <text x="760" y="90" font-size="12" fill="#b7c0cc">Cowl</text>
+                  <text x="845" y="195" font-size="11" fill="#e9eef5">to combustor &#8594;</text>
+                </g>
+              </svg>
+              <figcaption class="hint">Inlet shock structure: oblique shock train converging on the cowl lip (shock-on-lip design), with boundary-layer thickening and SBLI-driven separation entering the isolator.</figcaption>
+            </figure>
+
+            <figure class="diagram-card">
+              <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CFD computational domain and boundary conditions diagram">
+                <defs>
+                  <pattern id="coarseGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M0,0 H40 M0,0 V40" stroke="#243042" stroke-width="1"/>
+                  </pattern>
+                  <pattern id="fineGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M0,0 H10 M0,0 V10" stroke="#3a5270" stroke-width="0.6"/>
+                  </pattern>
+                  <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#7aa7ff"/>
+                  </marker>
+                </defs>
+                <g font-family="ui-sans-serif, system-ui, sans-serif">
+                  <rect x="40" y="30" width="920" height="360" fill="url(#coarseGrid)" stroke="#3a5270" stroke-width="1.25" stroke-dasharray="5,4"/>
+
+                  <path d="M70,326 L200,316 L370,252 L470,242 L560,230 L610,208 L650,196 L690,182 L730,172 L770,178 L810,196 L850,210 L890,218 L930,222 L960,226 L960,255 L610,242 L370,288 L70,358 Z" fill="url(#fineGrid)" opacity="0.9"/>
+                  <rect x="630" y="150" width="260" height="120" fill="url(#fineGrid)" opacity="0.9"/>
+
+                  <polygon points="40,400 70,330 370,260 610,215 960,230 960,400" fill="#0d1117" stroke="#3a5270" stroke-width="1.5"/>
+                  <polygon points="560,50 640,150 960,165 960,20 560,20" fill="#0d1117" stroke="#3a5270" stroke-width="1.5"/>
+
+                  <line x1="280" y1="30" x2="280" y2="390" stroke="#7aa7ff" stroke-width="1" stroke-dasharray="3,5" opacity="0.6"/>
+                  <line x1="500" y1="30" x2="500" y2="390" stroke="#7aa7ff" stroke-width="1" stroke-dasharray="3,5" opacity="0.6"/>
+                  <line x1="720" y1="30" x2="720" y2="390" stroke="#7aa7ff" stroke-width="1" stroke-dasharray="3,5" opacity="0.6"/>
+
+                  <line x1="14" y1="150" x2="38" y2="150" stroke="#7aa7ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                  <line x1="14" y1="230" x2="38" y2="230" stroke="#7aa7ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                  <line x1="14" y1="310" x2="38" y2="310" stroke="#7aa7ff" stroke-width="2" marker-end="url(#arrow2)"/>
+
+                  <line x1="962" y1="150" x2="986" y2="150" stroke="#b7c0cc" stroke-width="2" marker-end="url(#arrow2)"/>
+                  <line x1="962" y1="230" x2="986" y2="230" stroke="#b7c0cc" stroke-width="2" marker-end="url(#arrow2)"/>
+                  <line x1="962" y1="310" x2="986" y2="310" stroke="#b7c0cc" stroke-width="2" marker-end="url(#arrow2)"/>
+
+                  <text x="2" y="60" font-size="11" fill="#e9eef5" font-weight="600">INFLOW</text>
+                  <text x="2" y="74" font-size="10" fill="#b7c0cc">M&#8734;, p&#8734;, T&#8734;</text>
+                  <text x="893" y="60" font-size="11" fill="#e9eef5" font-weight="600">OUTFLOW</text>
+                  <text x="893" y="74" font-size="10" fill="#b7c0cc">non-reflecting</text>
+
+                  <text x="295" y="48" font-size="10" fill="#7aa7ff">Rank 0</text>
+                  <text x="515" y="48" font-size="10" fill="#7aa7ff">Rank 1</text>
+                  <text x="735" y="48" font-size="10" fill="#7aa7ff">Rank 2</text>
+                  <text x="900" y="48" font-size="10" fill="#7aa7ff">Rank 3</text>
+
+                  <text x="240" y="300" font-size="12" fill="#b7c0cc">No-slip, adiabatic wall (ramp)</text>
+                  <text x="700" y="105" font-size="12" fill="#b7c0cc">No-slip wall (cowl)</text>
+
+                  <text x="635" y="140" font-size="12" fill="#e8b86d">Refined mesh:</text>
+                  <text x="635" y="154" font-size="12" fill="#e8b86d">walls &amp; shock region</text>
+                  <text x="110" y="380" font-size="12" fill="#b7c0cc">Coarse freestream mesh</text>
+
+                  <text x="500" y="412" font-size="11" fill="#b7c0cc" text-anchor="middle">MPI domain decomposition &#8212; SLURM batch job on Oscar HPC</text>
+                </g>
+              </svg>
+              <figcaption class="hint">Computational domain &amp; boundary conditions: mesh refined near walls and the shock/SBLI region, domain-decomposed across an Oscar SLURM batch job.</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -518,7 +684,7 @@ I thrive on competition, precision, and collaboration, shaped by my experience a
         </div>
 
         <p class="muted" style="margin-top:12px">
-         
+
         </p>
       </div>
     </section>
@@ -627,6 +793,42 @@ history.replaceState(null,null,' ');
 
       <h3>Key Unexpected Finding</h3>
       <p>A larger A<sub>e</sub>/A* places a stronger normal shock deeper into the diverging section at takeoff — but the subsequent isentropic expansion to a larger exit area <em>reduces</em> exit velocity relative to a smaller nozzle. This counterintuitive result meant the noise and efficiency objectives pointed toward the same area ratio of ~2.74, removing what appeared to be a fundamental design conflict.</p>
+    </div>
+  </div>
+
+  <!-- SCRAMJET RESEARCH NOTES MODAL -->
+  <div class="modal-backdrop" id="scramjet-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <button class="modal-close" onclick="document.getElementById('scramjet-modal').classList.remove('open')">✕ Close</button>
+      <h2>Hypersonic Scramjet Inlet Aerodynamics</h2>
+      <p class="byline">Murphy Paul &nbsp;·&nbsp; Honors Thesis &nbsp;·&nbsp; Rodriguez Flow Group, Brown University · 2026–2027</p>
+
+      <h3>Project Overview</h3>
+      <p>Honors thesis investigating shock-wave/boundary-layer interactions (SBLI) in hypersonic scramjet inlet flow fields. The inlet compresses incoming flow through an oblique shock train designed to converge near the cowl lip ("shock-on-lip"), after which the flow passes through an isolator where reflected shocks and adverse pressure gradients can locally separate the boundary layer. Characterizing this SBLI behavior and the resulting aerothermal loads is central to the thesis.</p>
+
+      <h3>Methods &amp; Tools</h3>
+      <div class="m-igrid">
+        <div class="m-icell"><div class="m-ilabel">Solver</div><div class="m-ival">MFC (compressible)</div></div>
+        <div class="m-icell"><div class="m-ilabel">Cluster</div><div class="m-ival">Brown Oscar HPC</div></div>
+        <div class="m-icell"><div class="m-ilabel">Scheduling</div><div class="m-ival">SLURM</div></div>
+        <div class="m-icell"><div class="m-ilabel">Post-processing</div><div class="m-ival">Python</div></div>
+      </div>
+
+      <h3>Focus Areas</h3>
+      <table class="m-table">
+        <thead><tr><th>Area</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Shock structure</td><td>Oblique shock train geometry and shock-on-lip targeting for the inlet compression ramps</td></tr>
+          <tr><td>SBLI characterization</td><td>Separation/reattachment behavior where shocks impinge on the developing boundary layer</td></tr>
+          <tr><td>Aerothermal loads</td><td>Surface heat flux and pressure loading associated with shock impingement and separation</td></tr>
+          <tr><td>Validation</td><td>Comparison against canonical SBLI test cases reported in the literature</td></tr>
+        </tbody>
+      </table>
+
+      <div class="m-callout">
+        <div class="m-callout-label">Status</div>
+        <p>Research is ongoing. High-fidelity runs and validation against canonical SBLI cases are in progress on Oscar; a full write-up will follow upon thesis completion.</p>
+      </div>
     </div>
   </div>
 
